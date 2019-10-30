@@ -2,11 +2,11 @@
 let arrow = [6,37,-2,8,1,3,7,21,5,-17,10,-12,32,16,-8,10,9,4];
 let summ = 7;
 
-//Вариант решения 1
 for (let i=0; i<=arrow.length; i++) {
 	for (let ii=0; ii<=arrow.length; ii++) {
 		if (arrow[i] + arrow[ii] === summ) {
 			console.log("Число "+ arrow[i] + " (элемент " + i +"), число " + arrow[ii]+ " (элемент " + ii +").");
+			arrow[ii]="";
 		}
 	}
 }

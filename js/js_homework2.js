@@ -6,7 +6,7 @@ for (let i=0; i<=arrow.length; i++) {
 	for (let ii=0; ii<=arrow.length; ii++) {
 		if (arrow[i] + arrow[ii] === summ) {
 			console.log("Число "+ arrow[i] + " (элемент " + i +"), число " + arrow[ii]+ " (элемент " + ii +").");
-			arrow[ii]="";
+			arrow[ii] = " ";
 		}
 	}
 }

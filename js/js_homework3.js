@@ -1,7 +1,11 @@
 // Задание 1
-function recursing(num) {
-
+function sum(num) {
+	return (num%10) + sum(Math.floor(num/10));
 }
+let boo = 123;
+console.log(sum(boo));
+
+// строки, массивы и циклы - низззяяя >_<
 
 
 

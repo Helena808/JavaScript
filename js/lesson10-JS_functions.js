@@ -198,11 +198,82 @@ let sqrt=function(num) {
 
 function recurse(func,arrow) {
 	let localArrow = [];
-	for (i=0;i<arrow.length;i++) {
+	for (i=0; i<arrow.length; i++) {
 		localArrow[i]=func(arrow[i]);
 	}
 	return localArrow;
 }
 
 console.log(recurse(sqrt,arr));
+
+// РЕКУРСИЯ
+
+// Замыкание
+function multi(n) {
+	let x = n;
+	return function (m) {
+		return x*m;
+	}
+}
+
+let multiSix = multi(6); 
+// в multiSix вернулась ФУНКЦИЯ, которая будет умножать на 6 
+res = multiSix(5);
+console.log(res);
+res = multiSix(10);
+console.log(res);
+
+
+// САМОВЫЗЫВАЮЩАЯСЯ ФУНКЦИЯ
+// сама запускается с самого начала, 
+// используют, когда переменные var,
+// чтобы они не заливались в глобальную видимость
+(function () {
+	console.log("Самовызывающаяся функция");
+} () );
+
+
+// МЕТОДЫ ДЛЯ РАБОТЫ С МАССИВАМИ
+arr = [12,-56,0,-2,34,67,-7];
+
+//forEach - позволяет изменять эл-ты массива
+// ПЕРЕБОР МАССИВА (ВМЕСТО FOR)
+arr.forEach(function(elem,index,array) {
+	console.log("Элемент № "+ index + "= "+ elem);
+	array[index] *=2; // каждый элемент умножили на 2
+});
+
+console.log(arr);
+
+//filter - возвращает новый массив, состоящий из эл-тов,
+// ктр-е прошли провенрку переданной функцией
+arr = [12,-56,0,-2,34,67,-7];
+let lessZero = (elem,index,array) => elem<0;
+let newArr = arr.filter(lessZero);
+console.log(newArr);
+
+// map - возвращает новый массив, состоящий из элементов,
+// преобразованных переданной функцией
+arr = [12,-56,0,-2,34,67,-7];
+let sqr = (elem, index, array) => elem * elem;
+newArr = arr.map(sqr);
+console.log(newArr);
+
+
+// some - проверяет, удовлетворяет ли ХОТЬ КАКОЙ-ТО элемент
+// условию. Возвращает булево
+arr = [12,-56,0,-2,34,67,-7];
+lessZero = (elem,index,array) => elem<0;
+newArr = arr.some(lessZero); // true
+console.log(newArr);
+
+
+// every - проверяет, удовлетворяет ли КАЖДЫЙ элемент
+// условию. Возвращает булево
+arr = [12,-56,0,-2,34,67,-7];
+lessZero = (elem,index,array) => elem<0;
+newArr = arr.every(lessZero); // false
+console.log(newArr);
+
+
 

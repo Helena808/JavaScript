@@ -1,8 +1,12 @@
 // Задание 1
 function sum(num) {
-	return (num%10) + sum(Math.floor(num/10));
+	if (num < 10) {
+		return num;
+	} else {
+		return num%10 + sum(Math.floor(num/10));
+	}
 }
-let boo = 123;
+let boo = 9862;
 console.log(sum(boo));
 
 // строки, массивы и циклы - низззяяя >_<

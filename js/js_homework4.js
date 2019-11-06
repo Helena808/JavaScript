@@ -12,12 +12,11 @@ console.log(citiesArr);
 //let fragment = prompt("Что будем искать");
 let string = "Олень - северное животное. В летнее время оленям в тайге жарко, а в горах даже в июле холодно. Олень как бы создан для северных просторов, жёсткого ветра, длинных морозных ночей.";
 let fragment = "Олень";
-let arrString = string.split(" ");
 
 let count = 0;
-for (let i=0; i<arrString.length; i++) {
-	if (arrString[i] === fragment) {
-		count++;
+for (let i=0; i<string.length; i++) {
+	if (string.indexOf(fragment,i) !== -1) {
+		console.log(`Слово ${fragment} найдено с индекса ${i}`);
 	}
 }
 
@@ -46,4 +45,3 @@ palindromeCheck("babab");
 
 
 // Задание 5
-let string5 = 

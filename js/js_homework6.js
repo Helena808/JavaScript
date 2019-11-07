@@ -53,49 +53,41 @@ let goods = [
         }
 ];
 
-let table = document.createElement("table");
-table.setAttribute("border","1px solid black");
-table.setAttribute("height","500px");
-table.setAttribute("width","500px");
 
-let caption = table.createCaption();
-    caption.innerText = "goods";
+function generateTable(arrow) {
+    let table = document.createElement("table");
+    table.setAttribute("border","1px solid black");
+    table.setAttribute("height","500px");
+    table.setAttribute("width","500px");
 
-let countOfKeys = 0;
-for (let key in goods[0]) {
-    countOfKeys++;
-}
+    let caption = table.createCaption();
+        caption.innerText = "Заголовок таблицы";
 
-for (let i=0; i<=(goods.length+1); i++) {
-    let row = table.insertRow(i);
-    for (let ii=0; ii<=countOfKeys; ii++) {
-        let cell = row.insertCell(ii);
-    }
-}
+    let keys = Object.keys(arrow[0]);
 
+    for (let i=0; i<(arrow.length+1); i++) {
+        //делаем строки
+        let row = table.insertRow(i);
+        //делаем ячейки
+        for (let ii=0; ii<keys.length; ii++) { 
+            let cell = row.insertCell(ii);
+            //заполняем шапку
+            if (i===0) {
+                cell.innerText = keys[ii].toUpperCase();
+            } else {
+            //заполняем ячейки
+                let keyToCell = keys[ii];
+                cell.innerText = arrow[i-1][keyToCell];
+            };
+        };
+        
+    };
 
+    
 
+    document.body.append(table);
+};
 
+generateTable(articles);
+generateTable(goods);
 
-// ЯЧЕЙКИ
-//let cell1 = row.insertCell(0);
-//let cell2 = row.insertCell(1);
-
-//cell1.innerText = "Cell 1";
-//cell2.innerText = "Cell 2";
-
-
-document.body.append(table);
-
-//function generateTable (arrow) {
-  //  let table = document.createElement("table");
-    //for (let i=0; i<arrow.length; i++) {
-      //  let caption = table.createCaption(arrow[i]);
-
-//}
-
-
-
-// примеры вызова функции:
-//generateTable(articles); // генерация таблицы со статьями
-//generateTable(goods); // генерация таблицы с товарами

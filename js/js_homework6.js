@@ -27,45 +27,46 @@ let articles = [
 
 let goods = [
         {
-            title: "Пианино",
+            title: "Пианино", // 0
             price: 3000,
             count: 25
         },
         {
-            title: "Гитара",
+            title: "Гитара", // 1
             price: 1200,
             count: 40
         },
         {
-            title: "Барабаны",
+            title: "Барабаны", // 2
             price: 2700,
             count: 12
         },
         {
-            title: "Флейта",
+            title: "Флейта", // 3
             price: 900,
             count: 50
         },
         {
-            title: "Арфа",
+            title: "Арфа", // 4
             price: 3400,
             count: 5
         }
 ];
 
 
-function generateTable(arrow) {
+function generateTable(array) {
     let table = document.createElement("table");
     table.setAttribute("border","1px solid black");
     table.setAttribute("height","500px");
     table.setAttribute("width","500px");
+    //table.setAttribute("id","table");
 
     let caption = table.createCaption();
         caption.innerText = "Заголовок таблицы";
 
-    let keys = Object.keys(arrow[0]);
+    let keys = Object.keys(array[0]); // [title, price, count]
 
-    for (let i=0; i<(arrow.length+1); i++) {
+    for (let i=0; i<(array.length+1); i++) {
         //делаем строки
         let row = table.insertRow(i);
         //делаем ячейки
@@ -74,10 +75,43 @@ function generateTable(arrow) {
             //заполняем шапку
             if (i===0) {
                 cell.innerText = keys[ii].toUpperCase();
+               
+
+// НОВОЕ: ОБРАБОТКА СОБЫТИЯ
+                cell.addEventListener("click", sortTable);
+                //Сортировка массива
+                function sortTable() {
+                    array.sort(function(a,b) {
+                        if (isNaN(a[keys[ii]])) { // не число (с А)
+                            if (a[keys[ii]] > b[keys[ii]]) {
+                               return 1;
+                            } else if (a[keys[ii]] > b[keys[ii]]) {
+                                return 0;
+                            } else {
+                                return -1;
+                            };
+                        } else { // число (по убыванию)
+                             if (a[keys[ii]] > b[keys[ii]]) {
+                               return -1;
+                            } else if (a[keys[ii]] < b[keys[ii]]) {
+                                return 1;
+                            } else {
+                                return 0;
+                            };
+                        };
+                    });
+                    
+                    table.remove(); // удаляем неотсортированную таблицу
+                    generateTable(array); // вставляем отсортированную таблицу
+                };
+//
+
+
+
             } else {
             //заполняем ячейки
                 let keyToCell = keys[ii];
-                cell.innerText = arrow[i-1][keyToCell];
+                cell.innerText = array[i-1][keyToCell];
             };
         };
         
@@ -88,6 +122,13 @@ function generateTable(arrow) {
     document.body.append(table);
 };
 
+
+
+
 generateTable(articles);
+
+
+
+
 generateTable(goods);
 

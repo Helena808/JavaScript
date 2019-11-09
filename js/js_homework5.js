@@ -85,5 +85,8 @@ function arrSort (a, b) {
     }
 };
 
+//можно еще вместо if использовать .localeCompare
+
+
 books.sort(arrSort);
 console.log(books);

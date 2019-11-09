@@ -1,0 +1,12 @@
+#comments>p {
+	display: inline-block;
+	border: 1px solid grey;
+	width: 60%;
+	height: 128px;
+	margin: 0;
+}
+
+#comments>img {
+	display: inline-block;
+	margin: 0;
+}

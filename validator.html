@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validator</title>
+</head>
+<body>
+
+<form name="validate">
+    <input data-validate="login" type="text">
+    <!-- <span>Минанимальная длина - 4 символа!!!</span> -->
+    <!-- <span>Максимальная длина длина - 4 символа!!!</span> -->
+    <!-- Динамически созбадется в валидаторе -->
+    <input data-validate="password" type="password">
+    <input data-validate="name" type="text">
+    <input data-validate="comment" type="text">
+
+    <input type="submit" value="Отправить">
+</form>
+
+<script src="js/validator.js"></script>
+</body>
+</html>

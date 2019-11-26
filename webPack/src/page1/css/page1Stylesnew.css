@@ -1,0 +1,6 @@
+@import "page1Styles.css";
+
+div {
+	background: grey;
+	color: orange;
+}

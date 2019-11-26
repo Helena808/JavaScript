@@ -1,0 +1,1 @@
+import "../css/page2Styles.css";

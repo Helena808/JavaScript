@@ -1,3 +1,70 @@
+class GameField {
+	constructor(x, y, width, height) {
+		this._canvas = document.getElementsByTagName("canvas")[0];
+		this._width = width;
+		this._height = height;
+		this._x = x;
+		this._y = y;
+		this._context = this.context();
+
+	}
+
+		get canvas() {
+			return this._canvas;
+		};
+		set canvas(value) {
+			this._canvas = value;
+		};
+		get width() {
+			return this._width;
+		};
+		set width(value) {
+			this._width = value;
+		};
+		get height() {
+			return this._height;
+		};
+		set height(value) {
+			this._height = value;
+		};
+		get x() {
+			return this._x;
+		};
+		set x(value) {
+			this._x = value;
+		};
+		get y() {
+			return this._y;
+		};
+		set y(value) {
+			this._y = value;
+		};
+		get context() {
+			return this._context;
+		};
+		set context(value) {
+			this._context = value;
+		};
+
+	context() {
+		let ctx = this._name.getContext("2d");
+		ctx.fillStyle = "green";
+		ctx.fillRect(this._x,0,900,600);
+		return ctx;
+	};
+
+	event() {
+		document.addEventListener("keydown", move.bind(document,tiger));
+	}
+	drawImg() {
+		let img = new Image();
+		img.src = "img/"+this.img;
+		img.onload = () => { 
+			ctx.drawImage(img, this.x, this.y, this.width, this.height);
+		};
+	};
+}
+
 class Animal {
 	constructor() {
 		this._name = name;
@@ -86,38 +153,10 @@ class Tiger extends Animal {
 };
 
 
-class GameField {
-	constructor(x, y, width, height) {
-		this._canvas = document.getElementsByTagName("canvas")[0];
-		this._width = width;
-		this._height = height;
-		this._x = x;
-		this._y = y;
-		this._context = this.context();
-
-	}
-
-	context() {
-		let CTX = this._name.getContext("2d");
-		CTX.fillStyle = "green";
-		CTX.fillRect(this._x,0,900,600);
-		return CTX;
-	};
-
-	event() {
-		document.addEventListener("keydown", move.bind(document,tiger));
-	}
-	drawImg(obj) {
-		let img = new Image();
-		img.src = "img/"+this.img;
-		img.onload = () => { //когда загрузится изображение,//будет вызвана функция (как addEventListener)
-			ctx.drawImage(img, this.x, this.y, this.width, this.height);
-		};
-	};
-}
 
 
-let tiger = new Tiger ("Тигр");
+
+let tiger = new Animal ("Тигр");
 tiger.drawImg();
 console.log(tiger); //ok
 
